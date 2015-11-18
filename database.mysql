@@ -1,0 +1,161 @@
+-- MySQL Server version: 5.5.42
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+--
+-- Database: bj
+--
+CREATE DATABASE IF NOT EXISTS bj DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+USE bj;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table actuators
+--
+
+CREATE TABLE actuators (
+  actuator_id int(11) NOT NULL,
+  actuator_name text COLLATE utf8_unicode_ci NOT NULL,
+  actuator_type enum('bj.schaltaktor','bj.jalousieaktor','bj.szene','bj.schaltgruppe','bj.jalousiegruppe','bj.dimmaktor') COLLATE utf8_unicode_ci NOT NULL,
+  actuator_sn varchar(12) COLLATE utf8_unicode_ci DEFAULT NULL,
+  actuator_input_channel int(11) DEFAULT NULL,
+  actuator_output_channel int(11) DEFAULT NULL,
+  actuator_status text COLLATE utf8_unicode_ci
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table favorites
+--
+
+CREATE TABLE favorites (
+  favorite_id int(11) NOT NULL,
+  favorite_list int(11) NOT NULL,
+  favorite_order int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table floors
+--
+
+CREATE TABLE floors (
+  floor_id int(11) NOT NULL,
+  floor_order int(11) NOT NULL,
+  floor_name text COLLATE utf8_unicode_ci NOT NULL,
+  floor_icon text COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table lists
+--
+
+CREATE TABLE lists (
+  list_id int(11) NOT NULL,
+  list_actuator int(11) DEFAULT NULL,
+  list_room int(11) NOT NULL,
+  list_order int(11) NOT NULL,
+  list_name text COLLATE utf8_unicode_ci NOT NULL,
+  list_type enum('switch','shutter','dimmer','divider','shutter-group','switch-group','scene','buzzer','light','light-group') COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table rooms
+--
+
+CREATE TABLE rooms (
+  room_id int(11) NOT NULL,
+  room_floor int(11) NOT NULL,
+  room_order int(11) NOT NULL,
+  room_name text COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Indexes for table actuators
+--
+ALTER TABLE actuators
+  ADD PRIMARY KEY (actuator_id);
+
+--
+-- Indexes for table favorites
+--
+ALTER TABLE favorites
+  ADD PRIMARY KEY (favorite_id), ADD UNIQUE KEY favorite_order (favorite_order), ADD KEY favorites_list_foreign_key (favorite_list);
+
+--
+-- Indexes for table floors
+--
+ALTER TABLE floors
+  ADD PRIMARY KEY (floor_id), ADD UNIQUE KEY floor_order (floor_order);
+
+--
+-- Indexes for table lists
+--
+ALTER TABLE lists
+  ADD PRIMARY KEY (list_id), ADD UNIQUE KEY list_room (list_room,list_order), ADD KEY lists_actuator_foreign_key (list_actuator);
+
+--
+-- Indexes for table rooms
+--
+ALTER TABLE rooms
+  ADD PRIMARY KEY (room_id), ADD UNIQUE KEY room_floor (room_floor,room_order);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table actuators
+--
+ALTER TABLE actuators
+  MODIFY actuator_id int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table favorites
+--
+ALTER TABLE favorites
+  MODIFY favorite_id int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table floors
+--
+ALTER TABLE floors
+  MODIFY floor_id int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table lists
+--
+ALTER TABLE lists
+  MODIFY list_id int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table rooms
+--
+ALTER TABLE rooms
+  MODIFY room_id int(11) NOT NULL AUTO_INCREMENT;
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table favorites
+--
+ALTER TABLE favorites
+ADD CONSTRAINT favorites_list_foreign_key FOREIGN KEY (favorite_list) REFERENCES `lists` (list_id);
+
+--
+-- Constraints for table lists
+--
+ALTER TABLE lists
+ADD CONSTRAINT lists_actuator_foreign_key FOREIGN KEY (list_actuator) REFERENCES actuators (actuator_id),
+ADD CONSTRAINT lists_room_foreign_key FOREIGN KEY (list_room) REFERENCES rooms (room_id);
+
+--
+-- Constraints for table rooms
+--
+ALTER TABLE rooms
+ADD CONSTRAINT rooms_floor_foreign_key FOREIGN KEY (room_floor) REFERENCES floors (floor_id);
