@@ -7,4 +7,4 @@ Home is a home automation project for Busch Jäger's free@home system.
 
 Other versions might work, but are not tested.
 # License
-This is proprietary code that, is wholly owned by Stefan Stadlberger. It may not be modified, distributed or otherwise used without prior and explicit permission.
+This is proprietary code, © by Stefan Stadlberger. It may not be modified, distributed or otherwise used without prior and explicit permission. It might be switched to a open license at a later point.
