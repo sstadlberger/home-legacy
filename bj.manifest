@@ -1,0 +1,24 @@
+CACHE MANIFEST
+#2015-11-07_01
+#pngs are actually in assets and internally redirected via mod_rewrite
+CACHE:
+apple-icon-57x57.png
+apple-icon-72x72.png
+apple-icon-114x114.png
+apple-icon-144x144.png
+favicon-16x16.png
+favicon-32x32.png
+favicon-96x96.png
+index.php
+./
+ionic/css/ionic.min.css
+ionic/fonts/ionicons.eot
+ionic/fonts/ionicons.svg
+ionic/fonts/ionicons.ttf
+ionic/fonts/ionicons.woff
+ionic/fonts/ionicons.ttf?v=2.0.1
+ionic/fonts/ionicons.woff?v=2.0.1
+ionic/js/ionic.bundle.min.js
+NETWORK:
+bj.php
+ping.php

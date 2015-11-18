@@ -1,0 +1,4 @@
+AddType text/cache-manifest .manifest
+Options +FollowSymLinks
+RewriteEngine On
+RewriteRule ^([^/]*\.png)$ assets/$1 [L]
