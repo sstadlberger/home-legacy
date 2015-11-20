@@ -77,6 +77,9 @@ class BOSH {
 		// use magic functions for a nicer external interface and simpler internal structures
 		$valid = ['setSwitch', 'setSwitchGroup', 'setDimmer', 'setShutter', 'setShutterGroup', 'setScene'];
 		if (in_array($name, $valid)) {
+			if ($arguments[0] === NULL || $arguments[1] === NULL || $arguments[2] === NULL) {
+				throw new Exception('parameters may not be NULL: ' . $arguments[0] . ' / ' . $arguments[1] . ' / ' . $arguments[2]);
+			}
 			$this->_setter($name, $arguments[0], $arguments[1], $arguments[2]);
 		} else {
 			throw new Exception('unknown method: ' . $name);
