@@ -483,7 +483,7 @@ if (isset($_GET['debug'])) {
 				<ion-content class="center">
 					<ion-refresher pulling-text="Aktualisieren…" on-refresh="doPing()">
 					</ion-refresher>
-					<span style="font-size: 72px; line-height: 72px;">{{statusIcon}}</span><br />
+					<span style="font-size: 16px; line-height: 0; transform: scale(2.5); position: absolute; margin-left: -8px; margin-top: -8px">{{statusIcon}}</span><br />
 					{{statusText}}
 				</ion-content>
 			</ion-view>
