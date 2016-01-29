@@ -1,3 +1,5 @@
+This project has been abandoned. A newer version with more features (bi-directonal communication, better interface, Homamatic integration) is being developed here: https://github.com/sstadlberger/home
+
 # Home
 Home is a home automation project for Busch Jäger's free@home system.
 # Prerequisites
