@@ -146,7 +146,8 @@ if (isset($_GET['debug'])) {
 					noConnection: noConnection
 				};
 			}])
-			.config(function($stateProvider, $urlRouterProvider) {
+			.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
+				$ionicConfigProvider.tabs.position('bottom');
 				$stateProvider
 					.state('tabs', {
 						abstract: true,
