@@ -327,6 +327,7 @@ if (isset($_GET['debug'])) {
 				});
 			}])
 			.controller('statusCtrl', ['$scope', '$rootScope', '$ionicLoading', 'helper', function($scope, $rootScope, $ionicLoading, helper) {
+				$scope.android = ionic.Platform.isAndroid();
 				$ionicLoading.show({
 					template: 'Lade...'
 				});
@@ -485,6 +486,10 @@ if (isset($_GET['debug'])) {
 					</ion-refresher>
 					<span style="font-size: 16px; line-height: 0; transform: scale(2.5); position: absolute; margin-left: -8px; margin-top: -8px">{{statusIcon}}</span><br />
 					{{statusText}}
+					<br /><br /><br />
+					<button class="button" onclick="document.documentElement.webkitRequestFullScreen()" ng-if="android">
+						Fullscreen
+					</button>
 				</ion-content>
 			</ion-view>
 		</script>
