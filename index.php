@@ -309,7 +309,7 @@ if (isset($_GET['debug'])) {
 					params += '&channel=' + channel;
 					params += '&command=' + command;
 					$http.get(
-						'bj.php' + params,
+						'<?php echo API_URL ?>' + params,
 						{
 							timeout: 5000
 						}

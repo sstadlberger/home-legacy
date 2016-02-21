@@ -1,5 +1,5 @@
 CACHE MANIFEST
-#2016-02-10_d7
+#2016-02-21_d8
 #pngs are actually in assets and internally redirected via mod_rewrite
 CACHE:
 apple-icon-57x57.png
@@ -20,5 +20,6 @@ ionic/fonts/ionicons.ttf?v=2.0.1
 ionic/fonts/ionicons.woff?v=2.0.1
 ionic/js/ionic.bundle.min.js
 NETWORK:
-bj.php
+#should be same as API_URL in config.php:
+http://example.com/pathToApi*
 ping.php

@@ -18,5 +18,8 @@ define('DB_NAME', '');
 define('DB_USER', '');
 define('DB_PASSWORD', '');
 
+// Backend
+define('API_URL', 'http://example.com/pathToApi');
+
 
 ?>
