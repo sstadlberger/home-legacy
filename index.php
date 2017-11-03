@@ -72,6 +72,9 @@ if (isset($_GET['debug'])) {
 				align-items: center;
 				text-align: center;
 			}
+			.tabs {
+				height: 79px;
+			}
 		</style>
 		<script src="ionic/js/ionic.bundle.min.js"></script>
 		<script type="text/javascript">
